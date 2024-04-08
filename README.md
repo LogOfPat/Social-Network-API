@@ -1,3 +1,3 @@
 # Social-Network-API
 
-[Walkthrough video](Social-Network.webm)
+[Walkthrough video](social-network.webm)
