@@ -1,5 +1,5 @@
 {
-  "name": "Solved",
+  "name": "Social-Network-API",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^7.0.2"
+    "mongodb": "^6.9.0",
+    "mongoose": "^7.0.2",
+    "mongosh": "^2.3.1"
   }
 }

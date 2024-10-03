@@ -2,7 +2,7 @@ const { ObjectId } = require('mongoose').Types;
 const {Thought, User} = require('../models');
 
 module.exports = {
-    // Get all thoughts
+
     async getThoughts(req, res) {
         try {
             const thoughts = await Thought.find()
@@ -12,7 +12,7 @@ module.exports = {
             return res.status(500).json(err);
         }
     },
-    // Get thought by idea
+
     async getSingleThought(req, res) {
         try {
             const thought = await Thought.findOne({_id: req.params.thoughtId})
@@ -27,7 +27,7 @@ module.exports = {
             return res.status(500).json(err);
         }
     },
-    // Create a thought
+
     async createThought(req, res) {
         try {
             console.log(req.body);
@@ -51,7 +51,7 @@ module.exports = {
             return res.status(500).json(err);
         }
     },
-    // Update a thought
+
     async updateThought(req, res) {
         try {
             const thought = await Thought.findOneAndUpdate(
@@ -70,7 +70,7 @@ module.exports = {
             return res.status(500).json(err);
         }
     },
-    // delete a thought
+
     async deleteThought(req, res) {
         try {
             const thought = await Thought.findOneAndRemove({_id: req.params.thoughtId})
