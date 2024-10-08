@@ -1,4 +1,5 @@
 const {User} = require ('../models');
+const {Thought} = require ('../models');
 
 module.exports = {
 
@@ -19,6 +20,7 @@ module.exports = {
             if(!user) {
                 return res.status(404).json({message: 'No user with that ID'});
             };
+            console.log(user.thoughts);
             res.json({user})
         } catch (err){
             console.log(err);
@@ -57,14 +59,19 @@ module.exports = {
 
     async deleteUser(req, res) {
         try {
-
             const user = await User.findOneAndRemove({_id: req.params.userId})
+
+            // Store thought ids associated with deleted user to delete later
+            const thoughts = user.thoughts.toString()
 
             if (!user) {
                 return res.status(404).json({ message: 'No user with that ID'})
             }
             
-            res.json('User deleted');
+            const deletedThoughts = await Thought.deleteMany(
+                {_id: thoughts}
+            )
+            res.json(deletedThoughts.deletedCount + " associated thoughts deleted!")
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);
